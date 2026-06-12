@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { FaTrash, FaPlus, FaCalendarAlt, FaSpinner } from 'react-icons/fa';
 import toast from 'react-hot-toast';
@@ -22,25 +22,22 @@ const ManageEvents = () => {
   const CLOUDINARY_UPLOAD_PRESET = 'vedam_gallery';
 
   useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
-    try {
-      const q = query(collection(db, 'events'), orderBy('date', 'asc'));
-      const querySnapshot = await getDocs(q);
+    const q = query(collection(db, 'events'), orderBy('date', 'asc'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const eventsList = [];
       querySnapshot.forEach((doc) => {
         eventsList.push({ id: doc.id, ...doc.data() });
       });
       setEvents(eventsList);
       setLoading(false);
-    } catch (error) {
+    }, (error) => {
       console.error("Error fetching events: ", error);
       toast.error('Failed to load events');
       setLoading(false);
-    }
-  };
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleFileChange = (e) => {
     setFormData({ ...formData, file: e.target.files[0] });
@@ -98,7 +95,6 @@ const ManageEvents = () => {
       // Reset Form
       setFormData({ title: '', date: '', time: '', location: '', description: '', file: null });
       document.getElementById('event-file-upload').value = '';
-      fetchEvents();
       
     } catch (error) {
       console.error('Error creating event: ', error);
@@ -113,7 +109,6 @@ const ManageEvents = () => {
       try {
         await deleteDoc(doc(db, 'events', id));
         toast.success('Event deleted');
-        fetchEvents();
       } catch (error) {
         toast.error('Failed to delete event');
       }

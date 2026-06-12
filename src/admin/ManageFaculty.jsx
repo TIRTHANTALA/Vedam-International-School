@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { FaTrash, FaUserPlus, FaSpinner, FaUserTie } from 'react-icons/fa';
 import toast from 'react-hot-toast';
@@ -23,25 +23,22 @@ const ManageFaculty = () => {
   const CLOUDINARY_UPLOAD_PRESET = 'vedam_gallery';
 
   useEffect(() => {
-    fetchFaculty();
-  }, []);
-
-  const fetchFaculty = async () => {
-    try {
-      const q = query(collection(db, 'faculty'), orderBy('createdAt', 'desc'));
-      const querySnapshot = await getDocs(q);
+    const q = query(collection(db, 'faculty'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const facultyList = [];
       querySnapshot.forEach((doc) => {
         facultyList.push({ id: doc.id, ...doc.data() });
       });
       setFaculty(facultyList);
       setLoading(false);
-    } catch (error) {
+    }, (error) => {
       console.error("Error fetching faculty: ", error);
       toast.error('Failed to load faculty');
       setLoading(false);
-    }
-  };
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -81,7 +78,6 @@ const ManageFaculty = () => {
       setFormData({ name: '', role: '', department: '', qualification: '', email: '', linkedinUrl: '', imageUrl: '' });
       setImageFile(null);
       document.getElementById('faculty-image-upload').value = '';
-      fetchFaculty();
     } catch (error) {
       console.error('Error adding faculty: ', error);
       toast.error('Failed to add faculty member');
@@ -96,7 +92,6 @@ const ManageFaculty = () => {
       try {
         await deleteDoc(doc(db, 'faculty', id));
         toast.success('Faculty member removed');
-        fetchFaculty();
       } catch (error) {
         console.error("Error deleting document: ", error);
         toast.error('Failed to remove faculty member');

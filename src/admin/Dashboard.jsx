@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase/config';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { collection, getDocs, query, orderBy, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { FaUsers, FaImages, FaCalendarAlt, FaSignOutAlt, FaTachometerAlt, FaTrash, FaCheck, FaUserTie, FaCog, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
@@ -19,54 +19,57 @@ const Dashboard = () => {
   const [schoolLogo, setSchoolLogo] = useState('');
   const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'inquiries', 'gallery', 'events', 'faculty', 'settings'
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    let unsubAdmissions, unsubGallery, unsubEvents, unsubSettings;
+
+    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        fetchData();
+        // Setup Realtime Listeners
+        const inqQuery = query(collection(db, 'admissions'), orderBy('createdAt', 'desc'));
+        unsubAdmissions = onSnapshot(inqQuery, (snapshot) => {
+          const inquiriesList = [];
+          let newCount = 0;
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            if (data.status === 'New') newCount++;
+            inquiriesList.push({ id: doc.id, ...data });
+          });
+          setInquiries(inquiriesList);
+          setStats(prev => ({ ...prev, inquiries: newCount }));
+        });
+
+        unsubGallery = onSnapshot(collection(db, 'gallery'), (snapshot) => {
+          setStats(prev => ({ ...prev, gallery: snapshot.size }));
+        });
+
+        unsubEvents = onSnapshot(collection(db, 'events'), (snapshot) => {
+          setStats(prev => ({ ...prev, events: snapshot.size }));
+        });
+
+        unsubSettings = onSnapshot(doc(db, 'settings', 'general'), (docSnap) => {
+          if (docSnap.exists()) {
+            setSchoolLogo(docSnap.data().logoUrl);
+          }
+        });
+
       } else {
         navigate('/admin');
       }
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    return () => {
+      unsubscribeAuth();
+      if (unsubAdmissions) unsubAdmissions();
+      if (unsubGallery) unsubGallery();
+      if (unsubEvents) unsubEvents();
+      if (unsubSettings) unsubSettings();
+    };
   }, [navigate]);
-
-  const fetchData = async () => {
-    try {
-      // Run all Firestore queries in parallel
-      const [inquiriesSnap, galSnap, evSnap, settingsSnap] = await Promise.all([
-        getDocs(query(collection(db, 'admissions'), orderBy('createdAt', 'desc'))),
-        getDocs(collection(db, 'gallery')),
-        getDocs(collection(db, 'events')),
-        getDoc(doc(db, 'settings', 'general'))
-      ]);
-
-      const inquiriesList = [];
-      let newCount = 0;
-      inquiriesSnap.forEach((doc) => {
-        const data = doc.data();
-        if (data.status === 'New') newCount++;
-        inquiriesList.push({ id: doc.id, ...data });
-      });
-      setInquiries(inquiriesList);
-
-      if (settingsSnap.exists()) {
-        setSchoolLogo(settingsSnap.data().logoUrl);
-      }
-
-      setStats({
-        inquiries: newCount,
-        gallery: galSnap.size,
-        events: evSnap.size
-      });
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const handleLogout = async () => {
     try {
@@ -185,11 +188,34 @@ const Dashboard = () => {
             </button>
             <h1 className="text-xl lg:text-2xl font-bold text-gray-800 font-heading capitalize">{activeTab}</h1>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="text-sm font-medium text-gray-600 hidden sm:block">{user?.email}</div>
-            <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
-              {user?.email?.charAt(0).toUpperCase() || 'A'}
-            </div>
+          <div className="relative">
+            <button 
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              onBlur={() => setTimeout(() => setIsProfileOpen(false), 200)}
+              className="flex items-center gap-3 hover:bg-gray-50 p-1.5 rounded-full transition-colors focus:outline-none"
+            >
+              <div className="text-sm font-medium text-gray-600 hidden sm:block">{user?.email}</div>
+              <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shadow-sm">
+                {user?.email?.charAt(0).toUpperCase() || 'A'}
+              </div>
+            </button>
+            
+            {isProfileOpen && (
+              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 shadow-xl rounded-xl z-50 overflow-hidden py-1 transform origin-top-right transition-all">
+                <div className="px-4 py-3 border-b border-gray-50 bg-gray-50/50">
+                  <p className="text-xs text-gray-500 mb-0.5">Signed in as</p>
+                  <p className="text-sm font-bold text-gray-900 truncate">{user?.email}</p>
+                </div>
+                <div className="py-1">
+                  <button 
+                    onMouseDown={(e) => { e.preventDefault(); handleLogout(); }}
+                    className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center gap-3 font-medium"
+                  >
+                    <FaSignOutAlt className="text-red-400" /> Sign out
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </header>
 

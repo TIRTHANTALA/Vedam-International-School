@@ -113,7 +113,7 @@ const Admissions = () => {
         >
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">Admissions & Inquiry</h1>
           <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
-          <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Join the Vedam family. Fill out the form below to initiate the admission process or to ask any questions.</p>
+          <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Fill out the form below for admissions or inquiries.</p>
         </motion.div>
 
         <div className="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
@@ -131,7 +131,7 @@ const Admissions = () => {
 
             <div className="relative z-10">
               <h2 className="text-3xl font-heading font-bold mb-6">Get In Touch</h2>
-              <p className="text-blue-100 mb-10">Have questions? We'd love to hear from you. Reach out via form or connect instantly through our quick links.</p>
+              <p className="text-blue-100 mb-10">Have questions? Connect with us via form or quick links.</p>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">

@@ -44,7 +44,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Dedicated to shaping character and careers since 2005. Nurturing globally minded, confident, and compassionate leaders.
+            Dedicated to shaping character and careers since 2005. Nurturing confident and compassionate leaders.
           </motion.p>
         </div>
       </div>
@@ -64,10 +64,10 @@ const About = () => {
           <div className="w-full lg:w-1/2">
             <h2 className="text-3xl font-heading font-bold text-dark mb-4">Welcome to Our Community</h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Vedam International School was founded with a simple yet powerful premise: every child is unique and has the potential to excel given the right environment and guidance. Over the past nearly two decades, we have evolved into a premier educational institution known for academic excellence and holistic development.
+              Over the past two decades, we have evolved into a premier educational institution known for academic excellence and holistic development.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Our state-of-the-art campus, highly qualified faculty, and progressive curriculum ensure that students are not just prepared for exams, but for life. We blend traditional values with modern pedagogy to create an enriching learning experience.
+              We blend traditional values with modern pedagogy to create an enriching learning experience.
             </p>
           </div>
         </motion.div>
@@ -86,7 +86,7 @@ const About = () => {
               <FaRocket />
             </div>
             <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Mission</h3>
-            <p className="text-gray-600">To ignite a passion for learning, foster intellectual growth, and cultivate compassionate global citizens through innovative and inclusive education. We strive to provide a safe, nurturing environment where every student can achieve their full potential.</p>
+            <p className="text-gray-600">Igniting a passion for learning and cultivating global citizens through inclusive education.</p>
           </motion.div>
           
           {/* Vision */}
@@ -95,7 +95,7 @@ const About = () => {
               <FaEye />
             </div>
             <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Vision</h3>
-            <p className="text-gray-600">To be a premier institution that inspires excellence, creativity, and resilience, empowering students to lead and succeed in a dynamic world. We envision a community of lifelong learners who contribute positively to society.</p>
+            <p className="text-gray-600">Inspiring excellence and empowering students to lead in a dynamic world.</p>
           </motion.div>
           
           {/* Values */}
@@ -136,7 +136,7 @@ const About = () => {
                   <h4 className="font-bold text-lg text-dark">Foundation</h4>
                   <span className="font-semibold text-secondary">2005</span>
                 </div>
-                <p className="text-gray-600 text-sm">Vedam International School was established with just 50 students and 5 teachers in a small campus.</p>
+                <p className="text-gray-600 text-sm">Established with 50 students and 5 teachers.</p>
               </div>
             </div>
             
@@ -150,7 +150,7 @@ const About = () => {
                   <h4 className="font-bold text-lg text-dark">Campus Expansion</h4>
                   <span className="font-semibold text-secondary">2012</span>
                 </div>
-                <p className="text-gray-600 text-sm">Moved to the current state-of-the-art 10-acre campus with modern facilities and sports complex.</p>
+                <p className="text-gray-600 text-sm">Moved to our 10-acre campus with modern facilities.</p>
               </div>
             </div>
 
@@ -164,7 +164,7 @@ const About = () => {
                   <h4 className="font-bold text-lg text-dark">Digital Transformation</h4>
                   <span className="font-semibold text-secondary">2018</span>
                 </div>
-                <p className="text-gray-600 text-sm">Introduced smart classrooms, digital library, and comprehensive STEM robotics labs.</p>
+                <p className="text-gray-600 text-sm">Introduced smart classrooms and STEM labs.</p>
               </div>
             </div>
           </div>

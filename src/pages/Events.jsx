@@ -56,7 +56,7 @@ const Events = () => {
               date: "Oct 15, 2024",
               time: "10:00 AM - 4:00 PM",
               location: "Main Auditorium",
-              description: "Students from grades 6-12 will showcase their innovative science projects and working models. Parents are welcome to attend.",
+              description: "Students showcase innovative science projects.",
               image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop"
             },
             {
@@ -65,7 +65,7 @@ const Events = () => {
               date: "Nov 02-05, 2024",
               time: "8:00 AM onwards",
               location: "School Sports Complex",
-              description: "Vedam International hosts the regional inter-school basketball championship. Come cheer for our home team!",
+              description: "Regional inter-school basketball championship.",
               image: "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?q=80&w=1887&auto=format&fit=crop"
             }
           ]);
@@ -110,7 +110,7 @@ const Events = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Stay updated with the latest happenings, upcoming events, and important announcements at Vedam.
+            Stay updated with the latest happenings at Vedam.
           </motion.p>
         </div>
       </div>

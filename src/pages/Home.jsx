@@ -71,7 +71,7 @@ const Home = () => {
                 Empowering Minds, <br /> <span className="text-primary">Shaping Futures.</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                Welcome to Vedam International School, where holistic education meets modern innovation. We provide an environment that fosters curiosity, character, and continuous growth.
+                Holistic education meeting modern innovation. Fostering curiosity, character, and continuous growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link to="/about" className="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-blue-800 transition-all text-center flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -115,7 +115,7 @@ const Home = () => {
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">About Vedam</h2>
             <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
-            <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">We are committed to providing a transformative educational experience that prepares students for the challenges of tomorrow.</p>
+            <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Preparing students for the challenges of tomorrow.</p>
           </motion.div>
           
           <motion.div 
@@ -131,7 +131,7 @@ const Home = () => {
                 <FaRocket />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Mission</h3>
-              <p className="text-gray-600">To ignite a passion for learning, foster intellectual growth, and cultivate compassionate global citizens through innovative and inclusive education.</p>
+              <p className="text-gray-600">Igniting a passion for learning and cultivating global citizens through inclusive education.</p>
             </motion.div>
             
             {/* Vision */}
@@ -140,7 +140,7 @@ const Home = () => {
                 <FaEye />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Vision</h3>
-              <p className="text-gray-600">To be a premier institution that inspires excellence, creativity, and resilience, empowering students to lead and succeed in a dynamic world.</p>
+              <p className="text-gray-600">Inspiring excellence and empowering students to lead in a dynamic world.</p>
             </motion.div>
             
             {/* Values */}
@@ -174,7 +174,7 @@ const Home = () => {
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Virtual Campus Tour</h2>
               <div className="w-16 h-1 bg-secondary mb-6 rounded-full"></div>
-              <p className="text-gray-300 mb-8">Take a look inside our state-of-the-art campus. Experience our modern classrooms, sprawling sports fields, and advanced laboratories from the comfort of your home.</p>
+              <p className="text-gray-300 mb-8">Experience our modern classrooms, sports fields, and advanced labs from the comfort of your home.</p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3"><FaLaptopCode className="text-secondary text-xl" /> Smart Classrooms</li>
                 <li className="flex items-center gap-3"><FaFlask className="text-secondary text-xl" /> Advanced Science Labs</li>
@@ -227,7 +227,7 @@ const Home = () => {
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Contact Us</h2>
             <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
-            <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">We are here to answer your questions. Reach out to us via phone, email, or visit our campus.</p>
+            <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Reach out to us via phone, email, or visit our campus.</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
@@ -332,7 +332,7 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">Ready to shape your child's future?</h2>
-            <p className="text-blue-200 mb-8 max-w-2xl mx-auto text-lg">Join the Vedam family and give your child the foundation they need to succeed in the modern world.</p>
+            <p className="text-blue-200 mb-8 max-w-2xl mx-auto text-lg">Join the Vedam family and build a foundation for success.</p>
             <Link to="/admissions" className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-bold rounded-full hover:bg-amber-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
               Apply for Admission Now <FaArrowRight />
             </Link>

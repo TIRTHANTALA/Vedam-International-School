@@ -7,8 +7,33 @@
     <title>Vedam International School - Empowering Minds, Shaping Futures</title>
     <meta name="description" content="Vedam International School is a premier educational institution committed to providing holistic education, modern facilities, and expert faculty for students." />
     <meta name="keywords" content="Vedam International School, best school, holistic education, international curriculum" />
+    
+    <style>
+      /* Hide Google Translate Top Banner and tooltips */
+      .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+      .VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important; }
+      body { top: 0 !important; }
+      #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+      .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+      /* Hide the default widget since we will use a custom one */
+      #google_translate_element { display: none !important; }
+      .goog-logo-link { display: none !important; }
+    </style>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,hi,gu,mr,bn,ta,te',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </head>
   <body>
+    <!-- Hidden element for Google Translate API -->
+    <div id="google_translate_element"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

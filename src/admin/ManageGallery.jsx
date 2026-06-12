@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { FaTrash, FaUpload, FaImage, FaSpinner } from 'react-icons/fa';
 import toast from 'react-hot-toast';
@@ -21,25 +21,22 @@ const ManageGallery = () => {
   const CLOUDINARY_UPLOAD_PRESET = 'vedam_gallery';
 
   useEffect(() => {
-    fetchImages();
-  }, []);
-
-  const fetchImages = async () => {
-    try {
-      const q = query(collection(db, 'gallery'), orderBy('createdAt', 'desc'));
-      const querySnapshot = await getDocs(q);
+    const q = query(collection(db, 'gallery'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const imagesList = [];
       querySnapshot.forEach((doc) => {
         imagesList.push({ id: doc.id, ...doc.data() });
       });
       setImages(imagesList);
       setLoading(false);
-    } catch (error) {
+    }, (error) => {
       console.error("Error fetching images: ", error);
       toast.error('Failed to load images');
       setLoading(false);
-    }
-  };
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleFileChange = (e) => {
     setFormData({ ...formData, file: e.target.files[0] });
@@ -91,7 +88,6 @@ const ManageGallery = () => {
       setFormData({ title: '', category: 'campus', file: null });
       // Reset file input
       document.getElementById('file-upload').value = '';
-      fetchImages();
       
     } catch (error) {
       console.error('Upload Error: ', error);
@@ -106,7 +102,6 @@ const ManageGallery = () => {
       try {
         await deleteDoc(doc(db, 'gallery', id));
         toast.success('Image deleted');
-        fetchImages();
       } catch (error) {
         console.error("Error deleting document: ", error);
         toast.error('Failed to delete image');

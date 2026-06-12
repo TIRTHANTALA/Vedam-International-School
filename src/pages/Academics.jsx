@@ -44,7 +44,7 @@ const Academics = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            A curriculum designed to inspire curiosity, foster critical thinking, and build a strong foundation for lifelong learning.
+            Inspiring curiosity and building a strong foundation for lifelong learning.
           </motion.p>
         </div>
       </div>
@@ -66,7 +66,7 @@ const Academics = () => {
             </div>
             <h3 className="text-2xl font-bold font-heading mb-3 text-dark">Pre-Primary</h3>
             <span className="inline-block py-1 px-3 bg-pink-50 text-pink-600 rounded-full text-xs font-semibold mb-4">Nursery to KG</span>
-            <p className="text-gray-600 mb-6">Play-based learning focusing on motor skills, social interaction, and early cognitive development in a safe, nurturing environment.</p>
+            <p className="text-gray-600 mb-6">Play-based learning for early cognitive development.</p>
             <ul className="space-y-2 text-sm text-gray-500">
               <li>• Phonics & Language</li>
               <li>• Creative Arts & Crafts</li>
@@ -82,7 +82,7 @@ const Academics = () => {
             </div>
             <h3 className="text-2xl font-bold font-heading mb-3 text-dark">Primary & Middle</h3>
             <span className="inline-block py-1 px-3 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold mb-4">Grades 1 to 8</span>
-            <p className="text-gray-600 mb-6">Building foundational knowledge across subjects while encouraging inquiry, independent thinking, and collaborative projects.</p>
+            <p className="text-gray-600 mb-6">Building foundational knowledge across core subjects.</p>
             <ul className="space-y-2 text-sm text-gray-500">
               <li>• Core Academics (Math, Science, Languages)</li>
               <li>• Introduction to Coding</li>
@@ -98,7 +98,7 @@ const Academics = () => {
             </div>
             <h3 className="text-2xl font-bold font-heading mb-3 text-dark">High School</h3>
             <span className="inline-block py-1 px-3 bg-purple-50 text-purple-600 rounded-full text-xs font-semibold mb-4">Grades 9 to 12</span>
-            <p className="text-gray-600 mb-6">Rigorous academic preparation tailored to student's career aspirations. Focus on board exams, practical labs, and comprehensive evaluations.</p>
+            <p className="text-gray-600 mb-6">Rigorous academic preparation for career aspirations.</p>
             <ul className="space-y-2 text-sm text-gray-500">
               <li>• Science & Commerce Streams</li>
               <li>• Advanced Laboratories</li>
@@ -118,7 +118,7 @@ const Academics = () => {
           <div className="w-full lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center">
             <h2 className="text-3xl font-heading font-bold text-dark mb-6">Our Teaching Methodology</h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              We believe that education goes beyond textbooks. Our pedagogical approach blends traditional teaching methods with modern digital tools to create a rich, interactive learning experience that caters to diverse learning styles.
+              Our pedagogical approach blends traditional teaching with digital tools for a rich learning experience.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex gap-4">

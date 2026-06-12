@@ -4,6 +4,7 @@ import { FiMenu, FiX, FiArrowRight, FiChevronDown } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -118,22 +119,28 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <Link 
-              to="/admissions" 
-              className="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-blue-800 hover:shadow-lg transition-all transform hover:-translate-y-1 flex items-center gap-2"
-            >
-              Enroll Now <FiArrowRight />
-            </Link>
+            <div className="flex items-center gap-3 border-l border-gray-200 pl-4 ml-2">
+              <LanguageSelector />
+              <Link 
+                to="/admissions" 
+                className="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-blue-800 hover:shadow-lg transition-all transform hover:-translate-y-1 flex items-center gap-2"
+              >
+                Enroll Now <FiArrowRight />
+              </Link>
+            </div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden text-gray-700 text-2xl focus:outline-none relative z-50" 
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <FiX /> : <FiMenu />}
-          </button>
+          {/* Mobile Menu Actions */}
+          <div className="lg:hidden flex items-center gap-3 relative z-50">
+            <LanguageSelector />
+            <button 
+              className="text-gray-700 text-2xl focus:outline-none" 
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
       </div>
       

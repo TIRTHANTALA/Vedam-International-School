@@ -12,37 +12,37 @@ const Facilities = () => {
     {
       title: "Smart Classrooms",
       icon: <FaLaptopCode />,
-      desc: "Air-conditioned classrooms equipped with interactive flat panels, digital projectors, and high-speed internet to facilitate modern, engaging lessons.",
+      desc: "Equipped with interactive panels and internet for engaging lessons.",
       color: "bg-blue-500"
     },
     {
       title: "Advanced Science Labs",
       icon: <FaFlask />,
-      desc: "Fully equipped Physics, Chemistry, and Biology laboratories that provide hands-on experience and adhere to the highest safety standards.",
+      desc: "Fully equipped laboratories for safe, hands-on experience.",
       color: "bg-purple-500"
     },
     {
       title: "Sports Complex",
       icon: <FaBasketballBall />,
-      desc: "A sprawling sports arena featuring a standard football field, synthetic basketball courts, a swimming pool, and an indoor games hall.",
+      desc: "A sprawling sports arena featuring multiple courts and fields.",
       color: "bg-amber-500"
     },
     {
       title: "Digital Library",
       icon: <FaBookReader />,
-      desc: "A massive collection of physical books, journals, and e-resources, featuring a quiet reading room and individual study pods.",
+      desc: "A massive collection of books and e-resources with study pods.",
       color: "bg-green-500"
     },
     {
       title: "Safe Transport",
       icon: <FaBus />,
-      desc: "A fleet of modern, GPS-enabled buses covering the entire city, with dedicated female attendants ensuring student safety during transit.",
+      desc: "Modern, GPS-enabled buses ensuring safe transit.",
       color: "bg-red-500"
     },
     {
       title: "Medical Room",
       icon: <FaMedkit />,
-      desc: "A well-equipped infirmary with a full-time certified nurse and a visiting doctor to handle daily medical needs and emergencies.",
+      desc: "A well-equipped infirmary to handle medical needs.",
       color: "bg-teal-500"
     }
   ];
@@ -75,7 +75,7 @@ const Facilities = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            A world-class infrastructure designed to provide a safe, secure, and stimulating environment for holistic development.
+            World-class infrastructure for a safe and stimulating environment.
           </motion.p>
         </div>
       </div>
@@ -115,7 +115,7 @@ const Facilities = () => {
           <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Experience it Yourself</h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">Seeing is believing. We invite you to schedule a campus tour to experience our state-of-the-art facilities firsthand.</p>
+            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">Schedule a campus tour to experience our facilities firsthand.</p>
             <a href="/contact" className="inline-block px-8 py-4 bg-secondary text-white font-bold rounded-full hover:bg-amber-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
               Schedule a Campus Tour
             </a>
