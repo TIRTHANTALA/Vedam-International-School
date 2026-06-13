@@ -39,7 +39,7 @@ const Faculty = () => {
   }, []);
 
   return (
-    <div className="pt-10 pb-20 overflow-hidden bg-gray-50 min-h-screen">
+    <div className="pt-10 pb-20 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <div className="bg-primary text-white py-20 relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/3"></div>
@@ -72,7 +72,7 @@ const Faculty = () => {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 pb-10">
           {loading ? (
             <div className="col-span-full flex justify-center py-20">
               <FaSpinner className="animate-spin text-4xl text-primary" />
@@ -85,21 +85,21 @@ const Faculty = () => {
             facultyMembers.map((member, index) => (
             <motion.div 
               key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 group"
+              className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-gray-100 group"
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: (index % 4) * 0.1 }}
             >
-              <div className="relative h-60 overflow-hidden bg-gray-100">
+              <div className="relative h-32 sm:h-60 overflow-hidden bg-gray-100">
                 <img 
                   src={member.imageUrl ? getSmartCroppedUrl(member.imageUrl) : "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop"} 
                   alt={member.name} 
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
                 {(member.email || member.linkedinUrl) && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 gap-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:flex items-end justify-center pb-6 gap-4">
                     {member.email && (
                       <a href={`mailto:${member.email}`} className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors" title="Email">
                         <FaEnvelope />
@@ -113,15 +113,15 @@ const Faculty = () => {
                   </div>
                 )}
               </div>
-              <div className="p-6 relative">
-                <div className="absolute -top-6 right-6 w-12 h-12 bg-secondary text-white rounded-xl shadow-lg flex items-center justify-center text-2xl transform rotate-12 group-hover:rotate-0 transition-transform">
+              <div className="p-4 sm:p-6 relative">
+                <div className="absolute -top-4 right-3 w-8 h-8 sm:-top-6 sm:right-6 sm:w-12 sm:h-12 bg-secondary text-white rounded-lg sm:rounded-xl shadow-lg flex items-center justify-center text-sm sm:text-2xl transform rotate-12 group-hover:rotate-0 transition-transform">
                   <FaGraduationCap />
                 </div>
-                <h3 className="text-xl font-bold font-heading text-dark mb-1">{member.name}</h3>
-                <p className="text-primary font-medium text-sm mb-3">{member.role}</p>
-                <div className="w-10 h-1 bg-gray-200 mb-3"></div>
-                <p className="text-xs font-medium text-gray-500 mb-2">{member.qualification}</p>
-                <p className="text-gray-600 leading-relaxed text-xs">{member.department ? `Department: ${member.department}` : "Dedicated to student success."}</p>
+                <h3 className="text-sm sm:text-xl font-bold font-heading text-dark mb-1 line-clamp-1">{member.name}</h3>
+                <p className="text-primary font-medium text-[10px] sm:text-sm mb-2">{member.role}</p>
+                <div className="w-6 sm:w-10 h-1 bg-gray-200 mb-2 sm:mb-3"></div>
+                <p className="text-[9px] sm:text-xs font-medium text-gray-500 mb-1 sm:mb-2 line-clamp-1">{member.qualification}</p>
+                <p className="text-gray-600 leading-snug text-[9px] sm:text-xs line-clamp-2">{member.department ? `Dept: ${member.department}` : "Dedicated to student success."}</p>
               </div>
             </motion.div>
             ))

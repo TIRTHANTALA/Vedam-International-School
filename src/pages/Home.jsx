@@ -36,16 +36,16 @@ const Home = () => {
     }, (error) => {
       console.error("Error fetching settings:", error);
     });
-    
+
     return () => unsubscribe();
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div>
       {/* Notice Ticker */}
       <div className="bg-red-600 text-white text-sm py-2 relative z-30 overflow-hidden flex items-center group cursor-pointer">
         <div className="animate-ticker whitespace-nowrap flex-shrink-0 group-hover:[animation-play-state:paused]">
-          <span className="font-semibold mr-2">🔔 IMPORTANT NOTICE:</span> 
+          <span className="font-semibold mr-2">🔔 IMPORTANT NOTICE:</span>
           Admissions for the Academic Year 2026-27 are now open! Limited seats available.
         </div>
       </div>
@@ -55,10 +55,10 @@ const Home = () => {
         {/* Background elements */}
         <div className="absolute inset-0 bg-blue-50 z-0"></div>
         <div className="absolute top-0 right-0 w-2/3 h-full bg-primary rounded-l-[150px] opacity-10 z-0 hidden lg:block translate-x-10"></div>
-        
+
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-            <motion.div 
+            <motion.div
               className="w-full lg:w-1/2 text-center lg:text-left"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -82,8 +82,8 @@ const Home = () => {
                 </a>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="w-full lg:w-1/2 relative"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -106,7 +106,7 @@ const Home = () => {
       {/* About Us Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
@@ -117,34 +117,46 @@ const Home = () => {
             <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
             <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Preparing students for the challenges of tomorrow.</p>
           </motion.div>
-          
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+
+          <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-8 relative pb-10">
             {/* Mission */}
-            <motion.div variants={fadeInUp} className="bg-light p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow group">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="sticky top-20 md:static z-10 bg-white p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all group"
+            >
               <div className="w-16 h-16 bg-blue-100 text-primary rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                 <FaRocket />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Mission</h3>
               <p className="text-gray-600">Igniting a passion for learning and cultivating global citizens through inclusive education.</p>
             </motion.div>
-            
+
             {/* Vision */}
-            <motion.div variants={fadeInUp} className="bg-light p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow group">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="sticky top-24 md:static z-20 bg-light p-8 rounded-2xl border border-gray-100 shadow-xl hover:shadow-xl transition-all group"
+            >
               <div className="w-16 h-16 bg-amber-100 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
                 <FaEye />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Vision</h3>
               <p className="text-gray-600">Inspiring excellence and empowering students to lead in a dynamic world.</p>
             </motion.div>
-            
+
             {/* Values */}
-            <motion.div variants={fadeInUp} className="bg-light p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow group">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="sticky top-28 md:static z-30 bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-2xl hover:shadow-xl transition-all group"
+            >
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                 <FaHeart />
               </div>
@@ -156,7 +168,7 @@ const Home = () => {
                 <li className="flex items-center gap-2"><FaCheck className="text-green-500" /> Excellence in Action</li>
               </ul>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -165,7 +177,7 @@ const Home = () => {
         <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
+            <motion.div
               className="w-full lg:w-1/3"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -182,8 +194,8 @@ const Home = () => {
                 <li className="flex items-center gap-3"><FaBookReader className="text-secondary text-xl" /> Digital Library</li>
               </ul>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="w-full lg:w-2/3"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -192,12 +204,12 @@ const Home = () => {
             >
               <div className="relative pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-700 group bg-gray-900 flex items-center justify-center">
                 {settings.campusVideoUrl ? (
-                  <video 
-                    className="absolute top-0 left-0 w-full h-full object-cover" 
-                    src={settings.campusVideoUrl} 
-                    autoPlay 
-                    muted 
-                    loop 
+                  <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    src={settings.campusVideoUrl}
+                    autoPlay
+                    muted
+                    loop
                     controls
                   />
                 ) : (
@@ -218,7 +230,7 @@ const Home = () => {
       {/* Contact Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
@@ -230,13 +242,13 @@ const Home = () => {
             <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Reach out to us via phone, email, or visit our campus.</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            <motion.div 
-              className="bg-white p-5 rounded-xl shadow border-t-4 border-primary text-center"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
+          <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8 mb-16 relative">
+            <motion.div
+              className="sticky top-20 lg:static z-10 bg-white p-5 rounded-xl shadow-lg lg:shadow border-t-4 border-primary text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
             >
               <div className="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mx-auto mb-3">
                 <FaMapMarkerAlt />
@@ -246,13 +258,12 @@ const Home = () => {
               <a href="#map" className="text-primary text-sm font-semibold hover:underline">Get Directions</a>
             </motion.div>
 
-            <motion.div 
-              className="bg-white p-5 rounded-xl shadow border-t-4 border-secondary text-center"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
+            <motion.div
+              className="sticky top-24 lg:static z-20 bg-white p-5 rounded-xl shadow-xl lg:shadow border-t-4 border-secondary text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               <div className="w-12 h-12 bg-amber-50 text-secondary rounded-full flex items-center justify-center text-xl mx-auto mb-3">
                 <FaPhoneAlt />
@@ -262,13 +273,12 @@ const Home = () => {
               <a href={`tel:${settings.contactPhone}`} className="text-secondary text-sm font-semibold hover:underline">Call Now</a>
             </motion.div>
 
-            <motion.div 
-              className="bg-white p-5 rounded-xl shadow border-t-4 border-green-500 text-center"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
+            <motion.div
+              className="sticky top-28 lg:static z-30 bg-white p-5 rounded-xl shadow-2xl lg:shadow border-t-4 border-green-500 text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
               <div className="w-12 h-12 bg-green-50 text-green-500 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
                 <FaEnvelope />
@@ -279,7 +289,7 @@ const Home = () => {
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col lg:flex-row min-h-[400px] lg:min-h-[450px]"
             variants={fadeInUp}
             initial="hidden"
@@ -306,15 +316,15 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            
+
             <div className="w-full lg:w-2/3 h-[300px] lg:h-auto min-h-[300px]" id="map">
-              <iframe 
+              <iframe
                 src="https://www.google.com/maps?q=Vedam+International+School,+Karadva-Eklera+Rd,+Surat,+Gujarat&output=embed"
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
                 title="School Location Map"
                 className="grayscale hover:grayscale-0 transition-all duration-500"
               ></iframe>

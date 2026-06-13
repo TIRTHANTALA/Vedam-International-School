@@ -62,7 +62,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="pt-10 pb-20 overflow-hidden bg-gray-50 min-h-screen">
+    <div className="pt-10 pb-20 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <div className="bg-primary text-white py-20 relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/3"></div>

@@ -36,47 +36,52 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="mb-6 bg-white p-3 inline-block rounded-xl shadow-sm">
+          <div className="lg:col-span-1 flex flex-row lg:flex-col gap-5 items-start">
+            <div className="bg-white p-2 lg:p-3 rounded-xl shadow-sm shrink-0">
               <img 
                 src={settings.logoUrl || "https://res.cloudinary.com/ducxsgryc/image/upload/v1780933683/logo_pgqryv.png"} 
                 alt={`${settings.schoolName} Logo`} 
-                className="h-20 w-auto object-contain"
+                className="h-16 lg:h-20 w-auto object-contain"
               />
             </div>
-            <p className="text-gray-400 text-sm mb-5 leading-relaxed">
-              Dedicated to shaping character and careers since 2005. Nurturing globally minded, confident, and compassionate leaders.
-            </p>
-            <div className="flex gap-4">
-              {settings.facebookUrl && <a href={settings.facebookUrl} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"><FaFacebookF /></a>}
-              {settings.twitterUrl && <a href={settings.twitterUrl} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"><FaTwitter /></a>}
-              {settings.instagramUrl && <a href={settings.instagramUrl} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-all"><FaInstagram /></a>}
-              {settings.youtubeUrl && <a href={settings.youtubeUrl} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all"><FaYoutube /></a>}
+            <div>
+              <p className="text-gray-400 text-xs lg:text-sm mb-3 lg:mb-5 leading-relaxed">
+                Dedicated to shaping character and careers since 2005. Nurturing globally minded, confident, and compassionate leaders.
+              </p>
+              <div className="flex flex-wrap gap-2 lg:gap-4">
+                {settings.facebookUrl && <a href={settings.facebookUrl} target="_blank" rel="noreferrer" className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all text-sm"><FaFacebookF /></a>}
+                {settings.twitterUrl && <a href={settings.twitterUrl} target="_blank" rel="noreferrer" className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all text-sm"><FaTwitter /></a>}
+                {settings.instagramUrl && <a href={settings.instagramUrl} target="_blank" rel="noreferrer" className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-all text-sm"><FaInstagram /></a>}
+                {settings.youtubeUrl && <a href={settings.youtubeUrl} target="_blank" rel="noreferrer" className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all text-sm"><FaYoutube /></a>}
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold font-heading mb-6 border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> About Us</Link></li>
-              <li><Link to="/academics" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Academics</Link></li>
-              <li><Link to="/facilities" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Facilities</Link></li>
-              <li><Link to="/events" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Events</Link></li>
-              <li><Link to="/admissions" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Admissions</Link></li>
-              <li><Link to="/gallery" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Campus Life</Link></li>
-            </ul>
-          </div>
+          {/* Mobile 2-column wrapper for Links & Resources */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:col-span-2">
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-bold font-heading mb-6 border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
+              <ul className="space-y-3">
+                <li><Link to="/about" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> About Us</Link></li>
+                <li><Link to="/academics" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Academics</Link></li>
+                <li><Link to="/facilities" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Facilities</Link></li>
+                <li><Link to="/events" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Events</Link></li>
+                <li><Link to="/admissions" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Admissions</Link></li>
+                <li><Link to="/gallery" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Campus Life</Link></li>
+              </ul>
+            </div>
 
-          {/* Legal/Resources */}
-          <div>
-            <h3 className="text-lg font-bold font-heading mb-6 border-b border-gray-700 pb-2 inline-block">Resources</h3>
-            <ul className="space-y-3">
-              <li><Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Privacy Policy</Link></li>
-              <li><Link to="/terms-of-service" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Terms of Service</Link></li>
-              <li><Link to="/mandatory-disclosures" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> Mandatory Disclosures</Link></li>
-              <li><Link to="/faq" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs" /> FAQ</Link></li>
-            </ul>
+            {/* Legal/Resources */}
+            <div>
+              <h3 className="text-lg font-bold font-heading mb-6 border-b border-gray-700 pb-2 inline-block">Resources</h3>
+              <ul className="space-y-3">
+                <li><Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs shrink-0" /> Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs shrink-0" /> Terms of Service</Link></li>
+                <li><Link to="/mandatory-disclosures" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs shrink-0" /> Disclosures</Link></li>
+                <li><Link to="/faq" className="text-gray-400 hover:text-secondary transition-colors text-sm flex items-center gap-2"><FaAngleRight className="text-xs shrink-0" /> FAQ</Link></li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact */}

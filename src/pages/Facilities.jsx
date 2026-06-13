@@ -48,7 +48,7 @@ const Facilities = () => {
   ];
 
   return (
-    <div className="pt-10 pb-20 overflow-hidden bg-gray-50 min-h-screen">
+    <div className="pt-10 pb-20 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <div className="bg-primary text-white py-20 relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/3"></div>
@@ -81,15 +81,15 @@ const Facilities = () => {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 relative pb-10">
           {facilitiesList.map((facility, index) => (
             <motion.div 
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 group"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              className="sticky md:static bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 group"
+              style={{ top: `calc(5rem + ${index * 0.5}rem)`, zIndex: index + 10 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.1 }}
             >
               <div className={`h-2 w-full ${facility.color}`}></div>

@@ -17,7 +17,7 @@ const About = () => {
   };
 
   return (
-    <div className="pt-10 pb-20 overflow-hidden bg-gray-50">
+    <div className="pt-10 pb-20 bg-gray-50">
       {/* Page Header */}
       <div className="bg-primary text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/3"></div>
@@ -73,16 +73,16 @@ const About = () => {
         </motion.div>
 
         {/* Mission, Vision, Values (Reused from Home but expanded) */}
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8 mb-16"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-3 md:gap-8 mb-16 relative pb-10">
           {/* Mission */}
-          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-primary hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-blue-100 text-primary rounded-xl flex items-center justify-center text-3xl mb-6">
+          <motion.div 
+            className="sticky top-20 md:static z-10 bg-white p-8 rounded-2xl shadow-md border-t-4 border-primary hover:shadow-xl transition-shadow group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <div className="w-16 h-16 bg-blue-100 text-primary rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
               <FaRocket />
             </div>
             <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Mission</h3>
@@ -90,8 +90,14 @@ const About = () => {
           </motion.div>
           
           {/* Vision */}
-          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-secondary hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-amber-100 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+          <motion.div 
+            className="sticky top-24 md:static z-20 bg-white p-8 rounded-2xl shadow-md border-t-4 border-secondary hover:shadow-xl transition-shadow group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <div className="w-16 h-16 bg-amber-100 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
               <FaEye />
             </div>
             <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Our Vision</h3>
@@ -99,8 +105,14 @@ const About = () => {
           </motion.div>
           
           {/* Values */}
-          <motion.div variants={fadeInUp} className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-500 hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-3xl mb-6">
+          <motion.div 
+            className="sticky top-28 md:static z-30 bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-500 hover:shadow-xl transition-shadow group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
               <FaHeart />
             </div>
             <h3 className="text-2xl font-bold font-heading mb-4 text-dark">Core Values</h3>
@@ -110,7 +122,7 @@ const About = () => {
               <li className="flex items-start gap-3"><FaCheck className="text-green-500 mt-1 flex-shrink-0" /> <span><strong>Inclusion:</strong> We embrace diversity and foster a sense of belonging.</span></li>
             </ul>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Timeline */}
         <motion.div 

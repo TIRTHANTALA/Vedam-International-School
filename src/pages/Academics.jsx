@@ -17,7 +17,7 @@ const Academics = () => {
   };
 
   return (
-    <div className="pt-10 pb-20 overflow-hidden bg-gray-50 min-h-screen">
+    <div className="pt-10 pb-20 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <div className="bg-primary text-white py-20 relative overflow-hidden mb-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply opacity-50 -translate-y-1/2 translate-x-1/3"></div>
@@ -51,15 +51,15 @@ const Academics = () => {
 
       <div className="container mx-auto px-4 lg:px-8">
         {/* Stages of Learning */}
-        <motion.div 
-          className="grid lg:grid-cols-3 gap-8 mb-20"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8 mb-20 relative pb-10">
           {/* Pre-Primary */}
-          <motion.div variants={fadeInUp} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative overflow-hidden group">
+          <motion.div 
+            className="sticky top-20 lg:static z-10 bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <div className="absolute top-0 left-0 w-2 h-full bg-pink-400"></div>
             <div className="w-16 h-16 bg-pink-50 text-pink-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
               <FaPalette />
@@ -75,7 +75,13 @@ const Academics = () => {
           </motion.div>
 
           {/* Primary & Middle */}
-          <motion.div variants={fadeInUp} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative overflow-hidden group">
+          <motion.div 
+            className="sticky top-24 lg:static z-20 bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <div className="absolute top-0 left-0 w-2 h-full bg-blue-400"></div>
             <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
               <FaBookReader />
@@ -91,7 +97,13 @@ const Academics = () => {
           </motion.div>
 
           {/* High School */}
-          <motion.div variants={fadeInUp} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative overflow-hidden group">
+          <motion.div 
+            className="sticky top-28 lg:static z-30 bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 relative group"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <div className="absolute top-0 left-0 w-2 h-full bg-purple-400"></div>
             <div className="w-16 h-16 bg-purple-50 text-purple-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
               <FaFlask />
@@ -105,7 +117,7 @@ const Academics = () => {
               <li>• Career Counseling</li>
             </ul>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Teaching Methodology */}
         <motion.div 
