@@ -9,7 +9,12 @@ import LanguageSelector from './LanguageSelector';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedMenus, setExpandedMenus] = useState({});
   const location = useLocation();
+
+  const toggleSubmenu = (menuName) => {
+    setExpandedMenus(prev => ({ ...prev, [menuName]: !prev[menuName] }));
+  };
 
   const [settings, setSettings] = useState({
     schoolName: 'Vedam International School',
@@ -53,7 +58,7 @@ const Navbar = () => {
       name: 'Academics', 
       path: '/academics',
       dropdown: [
-        { name: 'Curriculum', path: '/academics' },
+        { name: 'Academics', path: '/academics' },
         { name: 'Facilities', path: '/facilities' },
         { name: 'Our Faculty', path: '/faculty' }
       ]
@@ -156,33 +161,63 @@ const Navbar = () => {
             <div className="flex flex-col py-4 px-6 space-y-4">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2">
-                  <div className="flex justify-between items-center">
-                    <Link 
-                      to={link.path} 
-                      className={`text-lg font-medium mobile-link ${
-                        location.pathname === link.path ? 'text-primary' : 'text-gray-700 hover:text-primary'
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
+                  <div className="flex justify-between items-center w-full">
+                    {link.dropdown ? (
+                      <button 
+                        onClick={() => toggleSubmenu(link.name)}
+                        className={`text-lg font-medium mobile-link text-left flex-grow ${
+                          expandedMenus[link.name] ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                        }`}
+                      >
+                        {link.name}
+                      </button>
+                    ) : (
+                      <Link 
+                        to={link.path} 
+                        onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
+                        className={`text-lg font-medium mobile-link ${
+                          location.pathname === link.path ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                    
+                    {link.dropdown && (
+                      <button 
+                        onClick={() => toggleSubmenu(link.name)} 
+                        className="p-2 text-2xl text-gray-500 hover:text-primary transition-colors focus:outline-none flex items-center justify-center w-10 h-10"
+                      >
+                        {expandedMenus[link.name] ? '-' : '+'}
+                      </button>
+                    )}
                   </div>
-                  {link.dropdown && (
-                    <div className="flex flex-col pl-4 mt-2 space-y-3 border-l-2 border-blue-100">
-                      {link.dropdown.map((subLink) => (
-                        <Link 
-                          key={subLink.name} 
-                          to={subLink.path} 
-                          className="text-gray-600 hover:text-primary text-base"
-                        >
-                          {subLink.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {link.dropdown && expandedMenus[link.name] && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="flex flex-col pl-4 mt-2 space-y-3 border-l-2 border-blue-100 overflow-hidden"
+                      >
+                        {link.dropdown.map((subLink) => (
+                          <Link 
+                            key={subLink.name} 
+                            to={subLink.path} 
+                            onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
+                            className="text-gray-600 hover:text-primary text-base py-1"
+                          >
+                            {subLink.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
               <Link 
                 to="/admissions" 
+                onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
                 className="text-primary font-bold text-lg pt-2 flex items-center gap-2"
               >
                 Enroll Now <FiArrowRight />
